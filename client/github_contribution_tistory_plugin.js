@@ -27,7 +27,9 @@ async function loadTistoryContributionGraph(
     // 최상단 변수의 스코프를 끌어내린다.
     var $;
     var jQuery;
-
+    console.log("파라미터"+graphId)
+    console.log("날짜"+storagePostId)
+     //
     //
     // jQuery에 github_graph 함수를 삽입한 뒤, jq 변수에 할당한다.
     let jq = undefined;
@@ -43,6 +45,7 @@ async function loadTistoryContributionGraph(
             }
         }
     }
+    console.log(" jQuery에 github_graph 함수를 삽입한 뒤, jq 변수에 할당"+jq)
 
     //
     // jQuery를 찾았는지 검사한다.
@@ -58,7 +61,7 @@ async function loadTistoryContributionGraph(
         // 스토리지 게시글의 URL을 조합하고,
         // 그 게시글의 HTML 문자열을 가져온다.
         // CORS 제약에 의해, 다른 블로그의 스토리지 게시글은 가져올 수 없다.
-        const storagePostUrl = `${window.location.origin}/${storagePostId}`;
+        const storagePostUrl = `${window.location.origin}/archive/${storagePostId}`;
         const storagePostRes = await fetch(storagePostUrl);
         const storagePostHtml = await storagePostRes.text();
 
